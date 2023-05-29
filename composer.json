@@ -1,0 +1,31 @@
+{
+    "name": "swooder/simple-pagination",
+    "description": "simple pagination extension for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "grid", "simplePaginate", "pagination"],
+    "homepage": "https://github.com/swooder/simple-pagination",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Swooder\\SimplePagination\\": "src/"
+        }
+    },
+    "authors": [
+        {
+
+            "name": "swooder",
+            "email": "shaojie519@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Swooder\\SimplePagination\\SimplePaginationServiceProvider"
+            ]
+        }
+    }
+}
