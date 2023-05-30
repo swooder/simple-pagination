@@ -4,6 +4,7 @@ namespace Swooder\SimplePagination\Tools;
 
 use Encore\Admin\Grid\Tools\Paginator as BasePaginator;
 use Encore\Admin\Grid\Tools\PerPageSelector;
+use Swooder\SimplePagination\Grid\SimpleGrid;
 use function collect;
 use function trans;
 
