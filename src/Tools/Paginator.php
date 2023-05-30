@@ -63,6 +63,32 @@ class Paginator extends BasePaginator
      */
     protected function paginationLinks()
     {
+        if ($this->grid instanceof SimpleGrid) {
+            if (!$this->grid->isSimple()) {
+                return $this->paginator->render('simplepagination::pagination', ['elements' => $this->elements()]);
+            }
+        }
+
         return $this->paginator->render('simplepagination::pagination');
+    }
+
+    /**
+     * Get the array of elements to pass to the view.
+     *
+     * @return array
+     */
+    protected function elements()
+    {
+        $paginator = clone $this->paginator;
+
+        $window = UrlWindow::make($paginator);
+
+        return array_filter([
+            $window['first'],
+            is_array($window['slider']) ? '...' : null,
+            $window['slider'],
+            is_array($window['last']) ? '...' : null,
+            $window['last'],
+        ]);
     }
 }

@@ -10,28 +10,36 @@ use Swooder\SimplePagination\Tools\Paginator;
 
 class SimpleGrid extends Grid
 {
+    protected $simple = true;
+
     public function __construct(Eloquent $model, Closure $builder = null)
     {
         $this->model = new Model($model, $this);
+        $this->model->simple(true);
         $this->keyName = $model->getKeyName();
         $this->builder = $builder;
         $this->initialize();
         $this->callInitCallbacks();
-        $this->simplePaginate(true);
     }
 
     /**
-     * 是否使用 simplePaginate 方法分页.
+     * 是否使用 simplePaginate 方法展示分页.
      *
      * @param  bool  $value
      * @return SimpleGrid
      */
     public function simplePaginate(bool $value = true)
     {
-        $this->model()->simple($value);
+        $this->simple = $value;
 
         return $this;
     }
+
+    public function isSimple()
+    {
+        return $this->simple;
+    }
+
 
 
     /**
